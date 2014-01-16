@@ -1,0 +1,8 @@
+#wpadminbar {
+  top: auto;
+  bottom: 0;
+}
+
+#wpadminbar .menupop .ab-sub-wrapper, #wpadminbar .shortlink-input {
+  bottom: 32px;
+}
