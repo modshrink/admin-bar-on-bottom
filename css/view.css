@@ -6,3 +6,8 @@
 #wpadminbar .menupop .ab-sub-wrapper, #wpadminbar .shortlink-input {
   bottom: 32px;
 }
+
+.admin-bar-fold a:before {
+  display: block;
+  content: "\f229";
+}
