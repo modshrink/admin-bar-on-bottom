@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Admin Bar on Bottom
-Plugin URI: https://github.com/modshrink/admin-bar-on-bottom
-Description: While you log in, the admin bar is displayed on a bottom.
-Version: 0.0.1
+Plugin Name: Bottom Admin Bar
+Plugin URI: https://github.com/modshrink/bottom-admin-bar
+Description: While you are logged in to WordPress, this plugin will move to the bottom the admin bar that is displayed on the web site.
+Version: 1.0.0
 Author: modshrink
 Author URI: http://www.modshrink.com/
-Text Domain: admin-bar-on-bottom
+Text Domain: bottom-admin-bar
 Domain Path: /languages
 License: GPL2
 
@@ -26,8 +26,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
-
 add_action( 'wp_enqueue_scripts', 'admin_bar_style_init', 11 );
 add_action( 'get_header','remove_admin_bar_css' );
 add_action( 'wp_head', 'my_admin_bar_bump_cb');
@@ -39,7 +37,7 @@ add_action('plugins_loaded', 'myplugin_init');
 
 
 function myplugin_init() {
-  load_plugin_textdomain( 'admin-bar-on-bottom', false, dirname( plugin_basename( __FILE__ ) ) ); 
+  load_plugin_textdomain( 'bottom-admin-bar', false, dirname( plugin_basename( __FILE__ ) ) ); 
 }
 
 /**
