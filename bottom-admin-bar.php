@@ -3,7 +3,7 @@
 Plugin Name: Bottom Admin Bar
 Plugin URI: https://github.com/modshrink/bottom-admin-bar
 Description: While you are logged in to WordPress, this plugin will move to the bottom the admin bar that is displayed on the web site.
-Version: 1.0.2
+Version: 1.0.3
 Author: modshrink
 Author URI: http://www.modshrink.com/
 Text Domain: bottom-admin-bar
@@ -26,48 +26,72 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-add_action( 'wp_enqueue_scripts', 'admin_bar_style_init', 11 );
-add_action( 'get_header','remove_admin_bar_css' );
-add_action( 'wp_head', 'my_admin_bar_bump_cb');
-add_action('plugins_loaded', 'myplugin_init');
+$BottomAdminBar = new BottomAdminBar();
 
-/**
- * Load plugin textdomain.
- */
+class BottomAdminBar {
 
+  public function __construct() {
+    add_action( 'plugins_loaded', array(&$this, 'myplugin_init') );
+    add_action( 'wp_enqueue_scripts', array(&$this, 'admin_bar_style_init'), 11 );
+    add_action( 'get_header', array(&$this, 'remove_admin_bar_css') );
+    add_action( 'wp_head', array(&$this, 'my_admin_bar_bump_cb') );
+    add_action( 'wp_head', array(&$this, 'keyboard_shortcut') );
+  }
 
-function myplugin_init() {
-  load_plugin_textdomain( 'bottom-admin-bar', false, dirname( plugin_basename( __FILE__ ) ) ); 
+  /**
+   * Load plugin textdomain.
+   */
+
+  public function myplugin_init() {
+    load_plugin_textdomain( 'bottom-admin-bar', false, dirname( plugin_basename( __FILE__ ) ) ); 
+  }
+
+  /**
+   *  Override default admin bar CSS.
+   */
+
+  public function admin_bar_style_init() {
+       wp_register_style( 'adminBarStyleSheet', plugins_url('css/view.css', __FILE__) );
+       wp_enqueue_style( 'adminBarStyleSheet' );
+  }
+
+  /**
+   * Remove default admin bar inline CSS.
+   */
+
+  public function remove_admin_bar_css() {
+      remove_action('wp_head', '_admin_bar_bump_cb');
+  }
+
+  /**
+   * Rewrite admin bar inline CSS.
+   */
+
+  public function my_admin_bar_bump_cb() {
+    echo "<style type=\"text/css\" media=\"screen\">";
+    echo "html { padding-bottom: 32px !important; }";
+    echo "* html body { padding-bottom: 32px !important; }";
+    echo "@media screen and ( max-width: 782px ) {";
+    echo "html { padding-bottom: 46px !important; }";
+    echo "* html body { padding-bottom: 46px !important; }";
+    echo "}";
+    echo "</style>";
+  }
+
+  /**
+   * Add keyboard shortcut.
+   */
+
+  public function keyboard_shortcut() { ?>
+    <script type="text/javascript">
+      jQuery(document).ready(function($){
+        $("body").keydown( function ( event ){
+          if( event.shiftKey === true && event.which === 65 ){
+            $("#wpadminbar").slideToggle();
+          }
+        });
+      });
+    </script>
+  <?php }
+
 }
-
-/**
- *  Override default admin bar CSS.
- */
-
-function admin_bar_style_init() {
-     wp_register_style( 'adminBarStyleSheet', plugins_url('css/view.css', __FILE__) );
-     wp_enqueue_style( 'adminBarStyleSheet' );
-}
-
-/**
- * Remove default admin bar inline CSS.
- */
-
-function remove_admin_bar_css() {
-    remove_action('wp_head', '_admin_bar_bump_cb');
-}
-
-/**
- * Rewrite admin bar inline CSS.
- */
-
-function my_admin_bar_bump_cb() { ?>
-<style type="text/css" media="screen">
-        html { padding-bottom: 32px !important; }
-        * html body { padding-bottom: 32px !important; }
-        @media screen and ( max-width: 782px ) {
-                html { padding-bottom: 46px !important; }
-                * html body { padding-bottom: 46px !important; }
-        }
-</style>
-<?php } ?>
