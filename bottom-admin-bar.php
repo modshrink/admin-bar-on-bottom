@@ -3,7 +3,7 @@
 Plugin Name: Bottom Admin Bar
 Plugin URI: https://github.com/modshrink/bottom-admin-bar
 Description: While you are logged in to WordPress, this plugin will move to the bottom the admin bar that is displayed on the web site.
-Version: 1.0.3
+Version: 1.1
 Author: modshrink
 Author URI: http://www.modshrink.com/
 Text Domain: bottom-admin-bar
@@ -28,11 +28,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 $BottomAdminBar = new BottomAdminBar();
 
+
 class BottomAdminBar {
 
   public function __construct() {
     add_action( 'plugins_loaded', array(&$this, 'myplugin_init') );
-    add_action( 'wp_enqueue_scripts', array(&$this, 'admin_bar_style_init'), 11 );
+    add_action( 'wp_enqueue_scripts', array(&$this, 'admin_bar_script_init'), 11 );
     add_action( 'get_header', array(&$this, 'remove_admin_bar_css') );
     add_action( 'wp_head', array(&$this, 'my_admin_bar_bump_cb') );
     add_action( 'wp_head', array(&$this, 'keyboard_shortcut') );
@@ -50,9 +51,12 @@ class BottomAdminBar {
    *  Override default admin bar CSS.
    */
 
-  public function admin_bar_style_init() {
-       wp_register_style( 'adminBarStyleSheet', plugins_url('css/view.css', __FILE__) );
-       wp_enqueue_style( 'adminBarStyleSheet' );
+  public function admin_bar_script_init() {
+    if ( is_user_logged_in() ) {
+      wp_register_style( 'adminBarStyleSheet', plugins_url('css/view.css', __FILE__) );
+      wp_enqueue_style( 'adminBarStyleSheet' );
+      wp_enqueue_script( 'jquery' );
+    }
   }
 
   /**
@@ -60,7 +64,7 @@ class BottomAdminBar {
    */
 
   public function remove_admin_bar_css() {
-      remove_action('wp_head', '_admin_bar_bump_cb');
+    remove_action('wp_head', '_admin_bar_bump_cb');
   }
 
   /**
@@ -68,30 +72,34 @@ class BottomAdminBar {
    */
 
   public function my_admin_bar_bump_cb() {
-    echo "<style type=\"text/css\" media=\"screen\">";
-    echo "html { padding-bottom: 32px !important; }";
-    echo "* html body { padding-bottom: 32px !important; }";
-    echo "@media screen and ( max-width: 782px ) {";
-    echo "html { padding-bottom: 46px !important; }";
-    echo "* html body { padding-bottom: 46px !important; }";
-    echo "}";
-    echo "</style>";
+    if ( is_user_logged_in() ) {
+      echo "<style type=\"text/css\" media=\"screen\">";
+      echo "html { padding-bottom: 32px !important; }";
+      echo "* html body { padding-bottom: 32px !important; }";
+      echo "@media screen and ( max-width: 782px ) {";
+      echo "html { padding-bottom: 46px !important; }";
+      echo "* html body { padding-bottom: 46px !important; }";
+      echo "}";
+      echo "</style>";
+    }
   }
 
   /**
    * Add keyboard shortcut.
    */
 
-  public function keyboard_shortcut() { ?>
-    <script type="text/javascript">
-      jQuery(document).ready(function($){
-        $("body").keydown( function ( event ){
-          if( event.shiftKey === true && event.which === 65 ){
-            $("#wpadminbar").slideToggle();
-          }
+  public function keyboard_shortcut() {
+    if ( is_user_logged_in() ) { ?>
+      <script type="text/javascript">
+        jQuery(document).ready(function($){
+          $("body").keydown( function ( event ){
+            if( event.shiftKey === true && event.which === 65 ){
+              $("#wpadminbar").slideToggle();
+            }
+          });
         });
-      });
-    </script>
+      </script>
   <?php }
+  }
 
 }

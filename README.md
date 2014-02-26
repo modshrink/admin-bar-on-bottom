@@ -1,4 +1,5 @@
-admin-bar-on-bottom
+Bottom Admin Bar
+
 ===================
 
 ##Description
@@ -12,8 +13,11 @@ admin-bar-on-bottom
 
 ##Changelog
 
+###1.1
+* Load the script only when you are logged-in.
+
 ###1.0.3
-* Fix some codes.
+* Fixed does not load the login script when not.
 * Added the admin bar display toggle(press shift and A key).
 
 ###1.0.2

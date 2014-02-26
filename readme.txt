@@ -4,7 +4,7 @@ Donate link:
 Tags: admin
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 1.0.3
+Stable tag: 1.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,10 +13,10 @@ Move Admin bar to the bottom.
 == Description ==
 
 * While you are logged in to WordPress, this plugin will move to the bottom the admin bar that is displayed on the web site.
-* (Ver.1.0.3)Press shift and A keys, you can toggles the visibility of the admin bar.
+* Press shift and A keys, you can toggles the visibility of the admin bar.
 
 * あなたがログインしている間、ウェブサイトに表示される管理バーを下部に移動させます。
-* (Ver.1.0.3)シフトキー+Aで、管理バーの表示/非表示を切り替えられます。
+* シフトキー+Aで、管理バーの表示/非表示を切り替えられます。
 
 == Installation ==
 
@@ -50,12 +50,10 @@ Move Admin bar to the bottom.
 
 == Changelog ==
 
-= 1.0.3 =
+= 1.1 =
 * Fix some codes.
 * Added the admin bar display toggle(press shift and A key).
-
-= 1.0.2 =
-* Renamed main php file.
+* Load the script only when you are logged-in.
 
 = 1.0.1 =
 * Fixed package contents.
