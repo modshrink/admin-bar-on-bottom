@@ -1,5 +1,4 @@
 #Bottom Admin Bar
-===================
 
 ##Overview
 
@@ -52,3 +51,8 @@
 
 ###0.0.1
 * Development.
+
+
+##See More
+
+* [http://wordpress.org/plugins/bottom-admin-bar/](http://wordpress.org/plugins/bottom-admin-bar/)
