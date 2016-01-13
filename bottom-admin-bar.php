@@ -28,9 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 $BottomAdminBar = new BottomAdminBar();
 
-
 class BottomAdminBar {
-
   public function __construct() {
     add_action( 'plugins_loaded', array(&$this, 'myplugin_init') );
     add_action( 'wp_enqueue_scripts', array(&$this, 'admin_bar_script_init'), 11 );
@@ -40,17 +38,15 @@ class BottomAdminBar {
   }
 
   /**
-   * Load plugin textdomain.
+   * Load plugin textdomain
    */
-
   public function myplugin_init() {
     load_plugin_textdomain( 'bottom-admin-bar', false, dirname( plugin_basename( __FILE__ ) ) ); 
   }
 
   /**
-   *  Override default admin bar CSS.
+   * Override default admin bar CSS.
    */
-
   public function admin_bar_script_init() {
     if ( is_user_logged_in() ) {
       wp_register_style( 'adminBarStyleSheet', plugins_url('css/view.css', __FILE__) );
@@ -60,17 +56,15 @@ class BottomAdminBar {
   }
 
   /**
-   * Remove default admin bar inline CSS.
+   * Remove default admin bar inline CSS
    */
-
   public function remove_admin_bar_css() {
     remove_action('wp_head', '_admin_bar_bump_cb');
   }
 
   /**
-   * Rewrite admin bar inline CSS.
+   * Rewrite admin bar inline CSS
    */
-
   public function my_admin_bar_bump_cb() {
     if ( is_user_logged_in() ) {
       echo "<style type=\"text/css\" media=\"screen\">";
@@ -85,9 +79,8 @@ class BottomAdminBar {
   }
 
   /**
-   * Add keyboard shortcut.
+   * Add keyboard shortcut
    */
-
   public function keyboard_shortcut() {
     if ( is_user_logged_in() ) { ?>
       <script type="text/javascript">
@@ -101,5 +94,4 @@ class BottomAdminBar {
       </script>
   <?php }
   }
-
 }
