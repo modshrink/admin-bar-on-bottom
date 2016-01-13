@@ -36,7 +36,7 @@ class BottomAdminBar {
     add_action( 'wp_enqueue_scripts', array(&$this, 'admin_bar_script_init'), 11 );
     add_action( 'get_header', array(&$this, 'remove_admin_bar_css') );
     add_action( 'wp_head', array(&$this, 'my_admin_bar_bump_cb') );
-    add_action( 'wp_head', array(&$this, 'keyboard_shortcut') );
+    add_action( 'wp_footer', array(&$this, 'keyboard_shortcut'), 21 );
   }
 
   /**
