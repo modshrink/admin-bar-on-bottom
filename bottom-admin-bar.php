@@ -86,9 +86,22 @@ EOM;
 		$output = <<< EOM
 <script type="text/javascript">
 jQuery(document).ready(function($){
-	$("body").keydown( function ( event ){
-		if( event.shiftKey === true && event.which === 65 ){
-			$("#wpadminbar").slideToggle();
+	var spaceClear = false;
+	$("body").keydown(function(event){
+		if(event.shiftKey === true && event.which === 65){
+			$("#wpadminbar").slideToggle('fast', deleteClearStyle(spaceClear));
+				if(spaceClear == false){
+					$("html").css({"cssText":"padding-bottom:0 !important"});
+					$("body").css({"cssText":"margin-bottom:0 !important"});
+					spaceClear = true;
+				}
+				function deleteClearStyle(spaceClear){	
+					if(spaceClear == true){
+						$("html").css("padding-bottom", '');
+						$("body").css("margin-bottom", '');
+						spaceClear = false;
+					}
+				}
 		}
 	});
 });
