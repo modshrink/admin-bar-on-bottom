@@ -3,7 +3,7 @@
 Plugin Name: Bottom Admin Bar
 Plugin URI: https://github.com/modshrink/bottom-admin-bar
 Description: While you are logged in to WordPress, this plugin will move to the bottom the admin bar that is displayed on the web site.
-Version: 1.1
+Version: 1.2
 Author: modshrink
 Author URI: http://www.modshrink.com/
 Text Domain: bottom-admin-bar

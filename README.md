@@ -33,6 +33,10 @@
 
 ##Changelog
 
+###1.2
+* Support Twenty Sixteen theme.
+* Fixed toggle action make blank space.
+
 ###1.1
 * Load the script only when you are logged-in.
 

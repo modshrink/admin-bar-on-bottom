@@ -3,8 +3,8 @@ Contributors: modshrink
 Donate link: 
 Tags: admin
 Requires at least: 3.8
-Tested up to: 3.8.1
-Stable tag: 1.1
+Tested up to: 4.4.1
+Stable tag: 1.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,10 @@ Move Admin bar to the bottom.
 1. Display in the WordPress3.8 with Twenty Fourteen theme.
 
 == Changelog ==
+
+= 1.2 =
+* Support Twenty Sixteen theme.
+* Fixed toggle action make blank space.
 
 = 1.1 =
 * Fix some codes.
