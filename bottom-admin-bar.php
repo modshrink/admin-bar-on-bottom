@@ -29,13 +29,19 @@ $BottomAdminBar = new BottomAdminBar();
 
 class BottomAdminBar {
 	public function __construct() {
-		if( 'true' === get_user_meta( get_current_user_id(), 'show_admin_bar_front', 1 ) ){
-			add_action( 'plugins_loaded', array( &$this, 'myplugin_init' ) );
-			add_action( 'wp_enqueue_scripts', array( &$this, 'admin_bar_script_init' ), 11 );
-			add_action( 'get_header', array( &$this, 'remove_admin_bar_css' ) );
-			add_action( 'wp_head', array( &$this, 'my_admin_bar_bump_cb' ) );
-			add_action( 'wp_footer', array( &$this, 'keyboard_shortcut' ), 21 );
-		}
+
+		// Checking the 'Show Toolbar when viewing site' check box.
+		global $current_user;
+		require_once ABSPATH . WPINC . '/pluggable.php';
+		get_currentuserinfo();
+		echo $current_user->ID;
+		if( 'true' !== get_user_meta( get_current_user_id(), 'show_admin_bar_front', 1 ) ) return;
+
+		add_action( 'plugins_loaded', array( &$this, 'myplugin_init' ) );
+		add_action( 'wp_enqueue_scripts', array( &$this, 'admin_bar_script_init' ), 11 );
+		add_action( 'get_header', array( &$this, 'remove_admin_bar_css' ) );
+		add_action( 'wp_head', array( &$this, 'my_admin_bar_bump_cb' ) );
+		add_action( 'wp_footer', array( &$this, 'keyboard_shortcut' ), 21 );
 	}
 	
 	/**
