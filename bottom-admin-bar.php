@@ -42,7 +42,6 @@ class BottomAdminBar {
 	 */
 	public function show_toolbar_check() {
 		get_currentuserinfo();
-		echo $current_user->ID;
 		if( 'true' !== get_user_meta( get_current_user_id(), 'show_admin_bar_front', 1 ) ) return;
 	}
 
