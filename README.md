@@ -3,10 +3,10 @@
 ##Overview
 
 * While you are logged in to WordPress, this plugin will move to the bottom the admin bar that is displayed on the web site.
-* (Ver.1.0.3)Press shift and A keys, you can toggles the visibility of the admin bar.
+* Press shift and A keys, you can toggles the visibility of the admin bar.
 
 * あなたがログインしている間、ウェブサイトに表示される管理バーを下部に移動させます。
-* (Ver.1.0.3)シフトキー+Aで、管理バーの表示/非表示を切り替えられます。
+* シフトキー+Aで、管理バーの表示/非表示を切り替えられます。
 
 ##Getting Started
 
@@ -32,6 +32,8 @@
 
 
 ##Changelog
+###1.3
+* Support 'Show Toolbar when viewing site' checkbox. 
 
 ###1.2
 * Support Twenty Sixteen theme.
