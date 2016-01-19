@@ -50,11 +50,12 @@ Move Admin bar to the bottom.
 
 == Changelog ==
 = 1.3 =
-* Support 'Show Toolbar when viewing site' checkbox. 
+* Support 'Show Toolbar when viewing site' checkbox. (Thanks [reeslo](https://github.com/modshrink/bottom-admin-bar/pull/2))
 
 = 1.2 =
 * Support Twenty Sixteen theme.
 * Fixed toggle action make blank space.
+* Change hook for keyboard_shortcut script to wp_footer. (Thanks [cr0ybot](https://github.com/modshrink/bottom-admin-bar/pull/1))
 
 = 1.1 =
 * Fix some codes.
