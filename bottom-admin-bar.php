@@ -41,7 +41,7 @@ class BottomAdminBar {
 	 * Checking the 'Show Toolbar when viewing site' check box.
 	 */
 	public function show_toolbar_check() {
-		get_currentuserinfo();
+		wp_get_current_user();
 		if( 'true' !== get_user_meta( get_current_user_id(), 'show_admin_bar_front', 1 ) ) return;
 	}
 
