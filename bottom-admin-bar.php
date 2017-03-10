@@ -34,14 +34,13 @@ class BottomAdminBar {
 		add_action( 'wp_enqueue_scripts', array( &$this, 'admin_bar_script_init' ), 11 );
 		add_action( 'get_header', array( &$this, 'remove_admin_bar_css' ) );
 		add_action( 'wp_head', array( &$this, 'my_admin_bar_bump_cb' ) );
-		add_action( 'wp_footer', array( &$this, 'keyboard_shortcut' ), 21 );
 	}
 
 	/**
 	 * Checking the 'Show Toolbar when viewing site' check box.
 	 */
 	public function show_toolbar_check() {
-		get_currentuserinfo();
+		wp_get_current_user();
 		if( 'true' !== get_user_meta( get_current_user_id(), 'show_admin_bar_front', 1 ) ) return;
 	}
 
@@ -59,7 +58,7 @@ class BottomAdminBar {
 		if ( is_user_logged_in() ) {
 			wp_register_style( 'adminBarStyleSheet', plugins_url( 'css/view.css', __FILE__ ) );
 			wp_enqueue_style( 'adminBarStyleSheet' );
-			wp_enqueue_script( 'jquery' );
+			wp_enqueue_script( 'bottom-admin-bar', plugins_url('bottom-admin-bar.js', __FILE__), array('jquery') );
 		}
 	}
 
@@ -96,25 +95,6 @@ EOM;
 		}
 
 		$output .= '</style>';
-		if ( is_user_logged_in() ) echo $output;
-	}
-
-	/**
-	* Add keyboard shortcut
-	*/
-	public function keyboard_shortcut() {
-		$output = <<< EOM
-<script type="text/javascript">
-jQuery( document ).ready( function( $ ){
-	$( 'body' ).keydown(function( event ){
-		if( event.shiftKey === true && event.which === 65 ){
-			$( '#wpadminbar' ).slideToggle( 'fast' );
-			$( 'html' ).toggleClass( 'spaceClear' );
-		}
-	});
-});
-</script>
-EOM;
 		if ( is_user_logged_in() ) echo $output;
 	}
 }
