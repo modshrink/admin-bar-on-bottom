@@ -46,7 +46,7 @@ class BottomAdminBar {
 	}
 
 	/**
-	 * Load plugin textdomain
+	 * テキストドメインのロード
 	 */
 	public function myplugin_init() {
 		load_plugin_textdomain( 'bottom-admin-bar', false, dirname( plugin_basename( __FILE__ ) ) ); 
