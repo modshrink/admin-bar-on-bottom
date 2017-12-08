@@ -3,8 +3,8 @@ Contributors: modshrink
 Donate link: 
 Tags: admin
 Requires at least: 3.8
-Tested up to: 4.4.1
-Stable tag: 1.3
+Tested up to: 4.9.1
+Stable tag: 1.4
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,11 +12,8 @@ Move Admin bar to the bottom.
 
 == Description ==
 
-* While you are logged in to WordPress, this plugin will move to the bottom the admin bar that is displayed on the web site.
-* Press shift and A keys, you can toggles the visibility of the admin bar.
-
-* あなたがログインしている間、ウェブサイトに表示される管理バーを下部に移動させます。
-* シフトキー+Aで、管理バーの表示/非表示を切り替えられます。
+* This plugin will move the admin bar to the bottom of the websites frontend.
+* Press Shift and A to toggle the visibility of the admin bar.
 
 == Installation ==
 
@@ -30,25 +27,21 @@ Move Admin bar to the bottom.
 1. Upload `/bottom-admin-bar/` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
-= 管理画面からのインストール =
-1. 'プラグイン > 新規追加'ページへ移動します
-1. 'Bottom Admin Bar'を検索します
-1. 'いますぐインストール'をクリックします
-1. プラグインページからBottom Admin Barを有効化します
-
-= 手動アップロードでのインストール =
-1. /bottom-admin-bar/フォルダを、/wp-content/plugins/ディレクトリにアップロードします
-1. プラグインメニューからBottom Admin Barを有効化します
-
 == Frequently asked questions ==
 = I can't find the setting screen. =
 *  No need to settings. This plug-in works only by activation.
 
 == Screenshots ==
 
-1. Display in the WordPress3.8 with Twenty Fourteen theme.
+1. Display in the WordPress 3.8 with Twenty Fourteen theme.
 
 == Changelog ==
+= 1.4 =
+* Refactoring
+* Removed jQuery dependency
+* Reduced readme to english language
+* Text correction and german language support
+
 = 1.3 =
 * Support 'Show Toolbar when viewing site' checkbox. (Thanks [reeslo](https://github.com/modshrink/bottom-admin-bar/pull/2)!)
 
