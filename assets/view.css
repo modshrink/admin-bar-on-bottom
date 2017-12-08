@@ -1,0 +1,32 @@
+html { padding-bottom: 32px !important; }
+* html body { padding-bottom: 32px !important; }
+@media screen and ( max-width: 782px ) {
+    html { padding-bottom: 46px !important; }
+    * html body { padding-bottom: 46px !important; }
+}
+
+#wpadminbar {
+    top: auto;
+    bottom: 0;
+    transition: opacity .3s;
+}
+#wpadminbar.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media screen and (max-width: 600px) {
+    #wpadminbar {
+        position:fixed;
+    }
+}
+
+#wpadminbar .menupop .ab-sub-wrapper,
+#wpadminbar .shortlink-input { bottom: 32px; }
+@media screen and (max-width: 782px) {
+    #wpadminbar .menupop .ab-sub-wrapper,
+    #wpadminbar .shortlink-input { bottom:46px; }
+}
+@media screen and (min-width: 783px) {
+    .admin-bar.masthead-fixed .site-header { top: 0; }
+}
